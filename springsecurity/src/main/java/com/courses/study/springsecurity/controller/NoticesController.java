@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class InitController {
+public class NoticesController {
 
-    @GetMapping(value = "/home")
+    @GetMapping(value = "/notices")
     public String home(){
-        return "welcome to Sprng";
+        return "notices data from DB";
     }
 }
