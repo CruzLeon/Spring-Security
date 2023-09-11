@@ -3,20 +3,13 @@ create database springsecuritydatabase;
 
 use springsecuritydatabase;
 
-CREATE TABLE users(
+CREATE TABLE customer(
     id INT NOT NULL AUTO_INCREMENT,
-    username VARCHAR(50) NOT NULL,
-    password VARCHAR(50) NOT NULL,
-    enabled INT NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    usern VARCHAR(50) NOT NULL,
+    pass VARCHAR(50) NOT NULL,
+    role VARCHAR(50) NOT NULL,
     primary key(id)
 );
 
-CREATE TABLE authorities(
-    id INT NOT NULL AUTO_INCREMENT,
-    username VARCHAR(50) NOT NULL,
-    authority VARCHAR(50) NOT NULL,
-    PRIMARY KEY(id)
-);
-
-INSERT INTO users VALUES(NULL, 'user1', 'user1', '1');
-INSERT INTO authorities VALUES (NULL, 'user1', 'write');
+INSERT INTO customer VALUES(null, 'user1@user1.com', 'user1', 'user1', 'write');
