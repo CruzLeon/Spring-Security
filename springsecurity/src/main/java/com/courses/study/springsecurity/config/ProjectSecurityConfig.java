@@ -46,7 +46,8 @@ public class ProjectSecurityConfig {
                         httpSecurityCorsConfigurer.configurationSource(corsConfiguration()))
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
                 .authorizeHttpRequests((requests) ->
-                        requests.requestMatchers("/my-**").authenticated()
+                        requests.requestMatchers("/my-balance").hasAnyRole("ADMIN", "ANOTHER")
+                                .requestMatchers("/my-**").authenticated()
                                 .requestMatchers("/register", "/contact", "/notices").permitAll()
                 )
                 .formLogin(withDefaults())
