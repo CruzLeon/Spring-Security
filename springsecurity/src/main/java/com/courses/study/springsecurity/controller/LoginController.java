@@ -5,8 +5,10 @@ import com.courses.study.springsecurity.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +19,7 @@ public class LoginController {
 
     private final CustomerRepository customerRepository;
     private final PasswordEncoder passwordEncoder;
+
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody Customer customer) {
         Customer savedCustomer = null;
@@ -31,5 +34,10 @@ public class LoginController {
                     .body("user created");
         }
         return response;
+    }
+
+    @GetMapping("/user")
+    public Customer registerUser(Authentication authentication) {
+        return customerRepository.findByEmail(authentication.getName()).get(0);
     }
 }
